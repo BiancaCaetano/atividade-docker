@@ -23,3 +23,18 @@
 4. dentro dessa pasta crie 2 arquivos: `db_root_password.txt` contendo a senha do usuário root e `db_password.txt` contendo a senha do administrador da database do WordPress 
 5. execute o commando `docker compose up` para criar e inicializar os containers
 6. aguarde os containers serem inicializados e quando o terminal ficar inativo por alguns segundos e o último log conter "ready for connections", você poderá usar o WordPress na [porta 80](http://localhost:80) e o phpMyAdmin na [porta 82](http://localhost:82)
+
+## Referências
+
+- [Bitnami Docker Image for WordPress README](https://github.com/bitnami/bitnami-docker-wordpress)
+- [Communication between multiple docker-compose projects](https://stackoverflow.com/questions/38088279/communication-between-multiple-docker-compose-projects)
+- [Compose file version 3 reference](https://docs.docker.com/compose/compose-file/compose-file-v3/)
+- [Docker Compose Restart Policies](https://www.baeldung.com/ops/docker-compose-restart-policies)
+- [Docker compose version 3.8 or 3.9 for latest?](https://forums.docker.com/t/docker-compose-version-3-8-or-3-9-for-latest/102439)
+- [Multiple Dockerfiles in One Project](https://www.baeldung.com/ops/multiple-dockerfiles)
+- [MySQL](https://hub.docker.com/_/mysql), [WordPress](https://hub.docker.com/_/wordpress) e [phpMyAdmin](https://hub.docker.com/_/phpmyadmin) (DockerHub - documentação das imagens)
+- [Quickstart: Compose and WordPress](https://docs.docker.com/samples/wordpress/)
+- [The Complete Guide to Docker Secrets](https://earthly.dev/blog/docker-secrets/)
+- [The Complete Guide to Docker Volumes](https://towardsdatascience.com/the-complete-guide-to-docker-volumes-1a06051d2cce)
+- [Understanding Docker’s “latest” Tag](https://www.howtogeek.com/devops/understanding-dockers-latest-tag/)
+- [Wordpress latest does not works with mysql latest container](https://github.com/docker-library/wordpress/issues/313)
