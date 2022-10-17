@@ -2,6 +2,17 @@
 
 ## WordPress no Docker
 
+### Dockerfile
+
+1. abra o terminal e use o comando `git clone` para fazer o download desse repositório
+2. use o comando `cd` para mudar o diretório e ir para a pasta [Dockerfile](./Dockerfile/) do repositório baixado no passo anterior
+3. use `chmod u+x script.sh` para tornar o script bash executável 
+4. execute o script usando `./script.sh root admin`, note que o script deve receber 2 argumentos:
+  - o primeiro argumento é a senha do usuário root
+  - o segundo argumento é a senha do administrador da database do WordPress
+    - poderíamos usar o root para conectar o WordPress ao servidor MySQL, no entanto, com o intuito de obedecer o *Principle of least privilege*, o script criará outro usuário que possui privilégios de administrador apenas na database dedicada ao WordPress
+5. após aguardar alguns segundos para os containers serem criados e inicializados, você poderá acessar o WordPress na [porta 80](http://localhost:80) e o phpMyAdmin na [porta 82](http://localhost:82)
+
 ### Docker Compose
 
 > O Docker Compose é uma ferramenta que auxilia na declaração, compartilhamento e execução de aplicações que são compostas por múltiplos containers. E é por isso que o Docker Compose se encaixa muito bem nessa atividade, pois uma aplicação de WordPress em Docker não precisa somente de um container para o WordPress, mas também de um outro container para o MySQL.
