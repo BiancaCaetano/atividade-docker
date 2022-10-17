@@ -9,5 +9,6 @@
 1. crie uma pasta com um nome qualquer (por example, `docker-wp`) em uma localidade de fácil acesso
 2. abra o PowerShell e use o comando `cd` para mudar de diretório e ir para a pasta criada no passo anterior
 3. faça o download do arquivo [`docker-compose.yml`](docker-compose.yml) e use o comando `move` para mover esse arquivo da pasta `Downloads` para o *working directory* configurado no passo anterior
-4. execute o commando `docker compose up` para criar e inicializar os containers
-5. aguarde os containers serem inicializados e quando o terminal ficar inativo por alguns segundos e o último log conter "ready for connections", você poderá usar o WordPress na [porta 80](http://localhost:80) e o phpMyAdmin na [porta 82](http://localhost:82)
+4. dentro dessa pasta crie 2 arquivos: `db_root_password.txt` contendo a senha do usuário root e `db_password.txt` contendo a senha do administrador da database do WordPress 
+5. execute o commando `docker compose up` para criar e inicializar os containers
+6. aguarde os containers serem inicializados e quando o terminal ficar inativo por alguns segundos e o último log conter "ready for connections", você poderá usar o WordPress na [porta 80](http://localhost:80) e o phpMyAdmin na [porta 82](http://localhost:82)

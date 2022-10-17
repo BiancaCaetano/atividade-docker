@@ -7,12 +7,17 @@ services:
       - db_data:/var/lib/mysql
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=rootpassword
+      # - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_root_password
       - MYSQL_DATABASE=dbexample
       - MYSQL_USER=userexample
-      - MYSQL_PASSWORD=passwordexample
+      # - MYSQL_PASSWORD=passwordexample
+      - MYSQL_PASSWORD_FILE=/run/secrets/db_password
     expose:
       - 3306
+    secrets:
+      - db_root_password
+      - db_password
 
   wp:
     image: wordpress:6.0.2
@@ -25,13 +30,23 @@ services:
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_NAME=dbexample
       - WORDPRESS_DB_USER=userexample
-      - WORDPRESS_DB_PASSWORD=passwordexample
+      # - WORDPRESS_DB_PASSWORD=passwordexample
+      - WORDPRESS_DB_PASSWORD_FILE=/run/secrets/db_password
+    secrets:
+      - db_root_password
+      - db_password
 
   admin:
     image: phpmyadmin:5.2.0
     restart: always
     ports:
       - 82:80
+
+secrets:
+  db_root_password:
+    file: db_root_password.txt
+  db_password:
+    file: db_password.txt
 
 volumes:
   db_data:
