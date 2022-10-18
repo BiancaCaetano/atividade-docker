@@ -1,59 +1,37 @@
-Para executar os contêineres do Windows, você precisa do Windows 10 ou Windows 11 edição Profissional ou Enterprise. As edições do Windows Home ou Education só permitirão que você execute contêineres Linux.
-
-# Instalando o docker no windows 
-
-Os contêineres e imagens criados com o Docker Desktop são compartilhados entre todas as contas de usuários em máquinas onde ela está instalada. Isso ocorre porque todas as contas do Windows usam o mesmo VM para construir e executar contêineres.
-
-1. Verifique qual tipo de windows sua máquina suporta .
-
-2. Vá até o site do docker, baixe o docker Desktop  installer.exe
-
-3. Obtenha o instalador no docker hub ( Se não tem uma conta, é importante criá-la.)
-
-4. Certifique-se de que a opção Use WSL 2 em vez de Hyper-V.
-
-5. Siga as instruções do assistente de instalação para autorizar o instalador e proceda com a instalação.
-
-6. Quando a instalação for bem sucedida, clique em Fechar para concluir o processo de instalação.
-
-Segue link da documentação para o auxilio do Docker Desktop no Windows 
-
-https://docs.docker.com/desktop/install/windows-install/
-
-
-# Usando o terminal para instalar :
-
-1. Depois de baixar o Docker Desktop  installer.exe 
-
-2. "Docker Desktop Installer.exe" install
-
-3. Start-Process 'Docker Desktop Installer.exe' -Wait install
-
-4. start /w "" "Docker Desktop Installer.exe" install
-
-5. Se sua conta de administração for diferente da sua conta de usuário, você deve adicionar o usuário ao grupo de usuários docker:
- net localgroup docker-users <user> /add.
-
-6. O Docker Desktop não é iniciado automaticamente após a instalação, pois o computador precisa ser reiniciado. Para iniciar o Docker Desktop:
-Pesquise por Docker e selecione Docker Desktop nos resultados de pesquisa.
-  
-7. Após isso, a instalação será iniciada se o Hyper-V estiver habilitado. Caso dê outros problemas, podem ser relacionados a bios do computador. 
-  
-8. Mas se tudo ocorrer bem, um símbolo de uma baleia vai aparecer na setinha da barra de notificações do lado direito inferior do seu computador e o docker desktop irá ficar verde com a mensagem running, ou seja, que está rodando corretamente.
-  
-9. Depois ao logar na janela com sua conta docker hub, é só iniciar o seu primeiro container . Para isso é importante que se tenha o powershell também  instalado para comandos no terminal ou o wsl com ubuntu, para executar as tarefas do windows .
-  
-  Feito isso a instalação completa contém o docker compose já estará também instalado.
-
-# Verifique se o Docker Compose está instalado corretamente verificando a versão.
-
- -docker compose version
-
 # Compass - Atividade de Docker
 
+> O Docker Desktop para Windows deve estar configurado para utilizar o **backend WSL 2**. No Windows 10/11 Home esse é o único backend disponível. Nas versões Education, Pro e Enterprise, o usuário deve ser certificar de que o backend ativado é o WSL e não a outra alternativa disponível — o Hyper-V. Para mais informações, visite esse [link](https://docs.docker.com/desktop/install/windows-install/#system-requirements).
+
+## Instalando o Docker Desktop no Windows
+
+Os contêineres e imagens criados com o Docker Desktop são compartilhados entre todas as contas de usuários nas máquinas onde ele está instalado. Isso ocorre porque todas as contas do Windows usam o mesmo VM para construir e executar contêineres.
+
+Você pode acessar a documentação do Docker Desktop nesse [link](https://docs.docker.com/desktop/install/windows-install/).
+
+### Instalando interativamente (GUI)
+
+1. Visite o site do [Docker](https://www.docker.com/) e baixe o instalador do Docker Desktop for Windows (`Docker Desktop Installer.exe`).
+2. Caso ainda não tenha uma conta no Docker Hub, seria importante criá-la.
+3. Caso a opção de backend apareça, certifique-se de que WSL 2 seja escolhido como o backend ao invés do Hyper-V.
+4. Siga as instruções do assistente de instalação para autorizar o instalador e proceda com a instalação.
+5. Quando a instalação for finalizada, clique em fechar para concluir o processo de instalação.
+6. Para testar se a instalação foi bem-sucedida: execute `docker run hello-world` (caso não apareça nenhum erro, tudo está ok) e `docker compose version` (para constatar que o Docker Compose foi instalado juntamente com o Docker Desktop).
+
+### Instalando usando a linha de comando
+
+1. Visite o site do [Docker](https://www.docker.com/) e baixe o instalador do Docker Desktop for Windows (`Docker Desktop Installer.exe`).
+2. Abra o PowerShell e use o comando `cd` para ir até a pasta em que se encontra o arquivo baixado no passo anterior.
+3. Para iniciar a instalação execute: `Start-Process 'Docker Desktop Installer.exe' -Wait install`.
+4. Se sua conta de administração for diferente da sua conta de usuário, você deve adicionar o usuário ao grupo de usuários docker: `net localgroup docker-users username /add` (substitua 'username' por o seu Windows username).
+5. O Docker Desktop não é iniciado automaticamente após a instalação, pois o computador precisa ser reiniciado.
+6. Após a máquina ser reiniciada, tudo deve funcionar normalmente. Caso haja algum problema, tente achar a solução para o problema pesquisando na internet.
+7. Mas se tudo ocorrer bem, um símbolo de uma baleia vai aparecer na setinha da barra de notificações do lado direito inferior do seu computador e o Docker Desktop irá ficar verde com a mensagem running, ou seja, que está rodando corretamente.
+8. Depois ao logar na janela com sua conta Docker Hub, é só iniciar o seu primeiro container. Para isso é importante que se tenha o Powershell também instalado para comandos no terminal ou o wsl com ubuntu, para executar as tarefas do windows.
+9. Para testar se a instalação foi bem-sucedida execute: `docker run hello-world` (caso não apareça nenhum erro, tudo está ok) e `docker compose version` (para constatar que o Docker Compose foi instalado juntamente com o Docker Desktop).
+ 
 ## WordPress no Docker
 
-### Dockerfile
+### Usando o Dockerfile
 
 1. abra o terminal e use o comando `git clone` para fazer o download desse repositório
 2. use o comando `cd` para mudar o diretório e ir para a pasta [Dockerfile](./Dockerfile/) do repositório baixado no passo anterior
@@ -64,7 +42,7 @@ Pesquise por Docker e selecione Docker Desktop nos resultados de pesquisa.
     - poderíamos usar o root para conectar o WordPress ao servidor MySQL, no entanto, com o intuito de obedecer o *Principle of least privilege*, o script criará outro usuário que possui privilégios de administrador apenas na database dedicada ao WordPress
 5. após aguardar alguns segundos para os containers serem criados e inicializados, você poderá acessar o WordPress na [porta 80](http://localhost:80) e o phpMyAdmin na [porta 82](http://localhost:82)
 
-### Docker Compose
+### Usando o Docker Compose
 
 > O Docker Compose é uma ferramenta que auxilia na declaração, compartilhamento e execução de aplicações que são compostas por múltiplos containers. E é por isso que o Docker Compose se encaixa muito bem nessa atividade, pois uma aplicação de WordPress em Docker não precisa somente de um container para o WordPress, mas também de um outro container para o MySQL.
 
