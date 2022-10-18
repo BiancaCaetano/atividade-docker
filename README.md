@@ -57,6 +57,14 @@ Você pode acessar a documentação do Docker Desktop nesse [link](https://docs.
 7. execute o commando `docker compose up` para criar e inicializar os containers
 8. aguarde os containers serem inicializados e quando o terminal ficar inativo por alguns segundos e o último log conter "ready for connections", você poderá usar o WordPress na [porta 80](http://localhost:80) e o phpMyAdmin na [porta 82](http://localhost:82)
 
+## Renomeando o localhost
+
+1. execute o aplicativo *Notepad* como administrador
+2. na barra de opções do *Notepad* clique em `Arquivo` e depois em `Abrir arquivo`
+3. o *Notepad* abrirá uma janela do Explorer para que você selecione o arquivo a ser aberto, cole `C:\WINDOWS\System32\drivers\etc` na barra de endereços dessa janela, aperte `Enter` e performe um duplo clique em cima do arquivo `hosts`
+4. para renomear o localhost você deve adicionar uma nova linha nesse arquivo mapeando o host local (`127.0.0.1`) para o novo nome — por exemplo, para renomear o localhost para 'atividade-docker' adicione a seguinte linha no arquivo `127.0.0.1 atividade-docker`
+5. após você ter realizado as mudanças desejadas, salve e feche o arquivo — as mudanças surtiram imediatamente
+
 ## Referências
 
 - [Bitnami Docker Image for WordPress README](https://github.com/bitnami/bitnami-docker-wordpress)
@@ -67,6 +75,7 @@ Você pode acessar a documentação do Docker Desktop nesse [link](https://docs.
 - [Multiple Dockerfiles in One Project](https://www.baeldung.com/ops/multiple-dockerfiles)
 - [MySQL](https://hub.docker.com/_/mysql), [WordPress](https://hub.docker.com/_/wordpress) e [phpMyAdmin](https://hub.docker.com/_/phpmyadmin) (DockerHub - documentação das imagens)
 - [Quickstart: Compose and WordPress](https://docs.docker.com/samples/wordpress/)
+- [Replace localhost to domain name](https://stackoverflow.com/questions/31067438/replace-localhost-to-domain-name)
 - [The Complete Guide to Docker Secrets](https://earthly.dev/blog/docker-secrets/)
 - [The Complete Guide to Docker Volumes](https://towardsdatascience.com/the-complete-guide-to-docker-volumes-1a06051d2cce)
 - [Understanding Docker’s “latest” Tag](https://www.howtogeek.com/devops/understanding-dockers-latest-tag/)
